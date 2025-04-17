@@ -1,0 +1,331 @@
+/* style.css - Updated with New Color Palette */
+
+/* === Global Styles & Variables === */
+
+/* Define reusable colors and fonts using CSS variables */
+:root {
+    /* -- NEW COLOR PALETTE -- */
+    --primary-color: #00afb9; /* Teal */
+    --secondary-color: #f07167; /* Coral */
+    --accent-color: #fdfcdc; /* Pale Yellow/Cream for subtle highlights */
+    /* -- Keeping other colors -- */
+    --text-color: #333; /* Dark grey for readability */
+    --light-text-color: #fff;
+    /* -- NEW GRADIENT -- Using the requested colors */
+    --background-gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    --form-bg-color: rgba(255, 255, 255, 0.92); /* Slightly more opaque white for form */
+    --font-main: 'Poppins', sans-serif; /* Clean sans-serif for body */
+    --font-heading: 'Bangers', cursive; /* Fun, bold font for headings */
+    --border-radius: 8px; /* Consistent rounded corners */
+}
+
+/* Basic reset for consistency across browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply base font, text color, and the new vibrant gradient background */
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    line-height: 1.6;
+    background: var(--background-gradient);
+    background-attachment: fixed; /* Keeps gradient fixed during scroll */
+    padding: 20px; /* Add padding around the entire page */
+}
+
+/* === Typography === */
+
+/* Style the main invitation header - Keep white for contrast on gradient */
+h1 {
+    font-family: var(--font-heading);
+    color: var(--light-text-color);
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Slightly stronger shadow */
+    text-align: center;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
+/* Style section headings - Use the primary Teal color */
+h2 {
+    color: var(--primary-color); /* Use Teal for section headers */
+    margin-bottom: 1em;
+    font-size: 1.8rem;
+    text-align: center;
+    /* Use the secondary Coral color for the underline */
+    border-bottom: 3px dashed var(--secondary-color);
+    padding-bottom: 0.3em;
+}
+
+/* Basic paragraph styling */
+p {
+    margin-bottom: 1em;
+}
+
+/* Style labels - Use the primary Teal color */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--primary-color); /* Teal for labels */
+}
+
+/* Style the legend within fieldsets - Use primary Teal color */
+legend {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--primary-color); /* Teal for legend */
+    padding: 0 0.5em;
+    margin-bottom: 0.8em;
+}
+
+/* === Layout Containers === */
+
+/* Center content, set max width, use slightly more opaque background */
+main, header, footer {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 25px; /* Slightly more padding */
+    background-color: var(--form-bg-color); /* Use updated semi-transparent background */
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Slightly enhanced shadow */
+}
+
+/* Specific header styling - remove background/shadow */
+.invitation-header {
+    background: none;
+    box-shadow: none;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Style the subheading (date) - Keep white text */
+.subheading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--light-text-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Style sections within main content */
+section {
+    margin-bottom: 35px; /* Increased space between sections */
+}
+
+/* Footer styling - Use Teal text on light background */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 15px;
+    font-size: 0.9em;
+    color: var(--primary-color); /* Teal text */
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for footer */
+}
+
+/* === Form Styling === */
+
+/* Style the container for form elements */
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+/* Style the text input field */
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Style input field when focused - Use Teal for focus outline */
+input[type="email"]:focus {
+    border-color: var(--primary-color); /* Teal border on focus */
+    box-shadow: 0 0 8px rgba(0, 175, 185, 0.5); /* Teal glow effect */
+    outline: none;
+}
+
+/* Style the fieldset containing radio buttons - Use Coral border */
+fieldset.attendance-group {
+    border: 2px solid var(--secondary-color); /* Coral border for fieldset */
+    border-radius: var(--border-radius);
+    padding: 20px; /* Increased padding */
+}
+
+/* Style the div containing each radio button and its label */
+fieldset.attendance-group div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px; /* Slightly more space */
+}
+
+/* Style radio button labels */
+fieldset.attendance-group label {
+    margin-bottom: 0;
+    margin-left: 10px;
+    font-weight: normal;
+    color: var(--text-color); /* Keep standard text color for options */
+    cursor: pointer;
+}
+
+/* Style radio buttons - Use Coral color */
+input[type="radio"] {
+    accent-color: var(--secondary-color); /* Coral for radio button selection */
+    width: 1.3em; /* Make radio button slightly larger */
+    height: 1.3em;
+    cursor: pointer;
+}
+/* Add custom focus style for radio buttons for better visibility */
+input[type="radio"]:focus-visible {
+     outline: 2px solid var(--primary-color);
+     outline-offset: 2px;
+}
+
+
+/* Style the submit button - Use Coral background */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--light-text-color);
+    background-color: var(--secondary-color); /* Coral button background */
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Add some letter spacing */
+}
+
+/* Style submit button on hover - Darken Coral */
+button[type="submit"]:hover {
+    background-color: #d45a4e; /* Darker shade of Coral */
+    transform: translateY(-3px); /* Slightly more lift */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Add shadow on hover */
+}
+
+/* Style submit button when active (pressed) */
+button[type="submit"]:active {
+    transform: translateY(0); /* Return to original position */
+    box-shadow: none; /* Remove shadow when pressed */
+}
+
+/* === Confirmation Message === */
+
+/* Hide the confirmation message initially */
+#confirmation-message {
+    display: none;
+    padding: 18px; /* Slightly more padding */
+    margin-bottom: 25px; /* More space */
+    border-radius: var(--border-radius);
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid; /* Add border property */
+    /* Default styles are hidden, JS will add classes for success/error */
+    /* Example Success state styling (add class 'success' via JS): */
+    /* background-color: #e0f8f0; color: #006a4e; border-color: #00afb9; */
+    /* Example Error state styling (add class 'error' via JS): */
+    /* background-color: #fdecea; color: #a32c2c; border-color: #f07167; */
+}
+
+/* Style for success message (add class 'success' with JS) */
+#confirmation-message.success {
+    background-color: #e6fffa; /* Light teal background */
+    color: #00796b; /* Dark teal text */
+    border-color: var(--primary-color); /* Teal border */
+}
+
+/* Style for error message (add class 'error' with JS) */
+#confirmation-message.error {
+    background-color: #fff0ef; /* Light coral background */
+    color: #c04539; /* Dark coral text */
+    border-color: var(--secondary-color); /* Coral border */
+}
+
+
+/* === Responsiveness === */
+
+/* Media Query for Tablets and Desktops (screens wider than 768px) */
+@media (min-width: 768px) {
+    /* Increase heading sizes slightly on larger screens */
+    h1 {
+        font-size: 3.8rem; /* Slightly larger */
+    }
+
+    h2 {
+        font-size: 2.3rem; /* Slightly larger */
+    }
+
+    /* Make the submit button not full width */
+    button[type="submit"] {
+        width: auto; /* Allow button to size based on content */
+        min-width: 200px; /* Ensure a minimum width */
+        padding: 15px 40px;
+        margin-left: auto; /* Center button */
+        margin-right: auto;
+    }
+}
+
+/* Ensure Google Fonts import is in the HTML <head>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+*/
+
+/* Add this entire block to your style.css file */
+
+/* === Dynamic Background Class === */
+/* Add this new class definition block to your style.css file,
+   preferably near the other dynamic background class */
+
+/* === Dynamic Background Classes === */
+
+/* Class for the 'attending' GIF background */
+body.body-gif-background {
+    background-image: url('https://media.giphy.com/media/l2JHPB58MjfV8W3K0/giphy.gif');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #333; /* Fallback color */
+    /* Ensure full override */
+    background: url('https://media.giphy.com/media/l2JHPB58MjfV8W3K0/giphy.gif') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #333;
+}
+
+/* == NEW CLASS == */
+/* Class for the 'not attending' GIF background */
+body.body-sad-gif-background {
+    /* Set the background image to the specified 'sad' GIF */
+    background-image: url('https://media.giphy.com/media/JER2en0ZRiGUE/giphy.gif');
+
+    /* Apply the same coverage, positioning, and fixed attachment rules */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    /* Optional: A different fallback color if desired */
+    background-color: #222;
+
+    /* Ensure full override */
+    background: url('https://media.giphy.com/media/JER2en0ZRiGUE/giphy.gif') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #222; /* Reiterate fallback */
+}
+
+/* End of new CSS block addition */
