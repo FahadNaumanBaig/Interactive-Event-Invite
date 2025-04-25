@@ -1,4 +1,4 @@
-/* style.css - Updated with New Color Palette */
+/* style.css - Updated with New Color Palette & Firebase Features */
 
 /* === Global Styles & Variables === */
 
@@ -26,7 +26,7 @@
     box-sizing: border-box;
 }
 
-/* Apply base font, text color, and the new vibrant gradient background */
+/* Apply base font, text color, and the default vibrant gradient background */
 body {
     font-family: var(--font-main);
     color: var(--text-color);
@@ -133,8 +133,9 @@ footer {
     margin-bottom: 1.5em;
 }
 
-/* Style the text input field */
-input[type="email"] {
+/* Style the text/email input fields */
+input[type="email"],
+input[type="text"] {
     width: 100%;
     padding: 12px;
     border: 2px solid #ccc;
@@ -143,8 +144,9 @@ input[type="email"] {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Style input field when focused - Use Teal for focus outline */
-input[type="email"]:focus {
+/* Style input fields when focused - Use Teal for focus outline */
+input[type="email"]:focus,
+input[type="text"]:focus {
     border-color: var(--primary-color); /* Teal border on focus */
     box-shadow: 0 0 8px rgba(0, 175, 185, 0.5); /* Teal glow effect */
     outline: none;
@@ -182,8 +184,8 @@ input[type="radio"] {
 }
 /* Add custom focus style for radio buttons for better visibility */
 input[type="radio"]:focus-visible {
-     outline: 2px solid var(--primary-color);
-     outline-offset: 2px;
+      outline: 2px solid var(--primary-color);
+      outline-offset: 2px;
 }
 
 
@@ -228,11 +230,6 @@ button[type="submit"]:active {
     font-weight: bold;
     text-align: center;
     border: 2px solid; /* Add border property */
-    /* Default styles are hidden, JS will add classes for success/error */
-    /* Example Success state styling (add class 'success' via JS): */
-    /* background-color: #e0f8f0; color: #006a4e; border-color: #00afb9; */
-    /* Example Error state styling (add class 'error' via JS): */
-    /* background-color: #fdecea; color: #a32c2c; border-color: #f07167; */
 }
 
 /* Style for success message (add class 'success' with JS) */
@@ -247,6 +244,133 @@ button[type="submit"]:active {
     background-color: #fff0ef; /* Light coral background */
     color: #c04539; /* Dark coral text */
     border-color: var(--secondary-color); /* Coral border */
+}
+
+/* === Dynamic Background Classes (Keep these for JS control) === */
+
+/* Class for the 'attending' GIF background */
+body.body-gif-background {
+    background-image: url('https://media.giphy.com/media/l2JHPB58MjfV8W3K0/giphy.gif');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #333; /* Fallback color */
+    /* Ensure full override */
+    background: url('https://media.giphy.com/media/l2JHPB58MjfV8W3K0/giphy.gif') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #333;
+}
+
+/* Class for the 'not attending' GIF background */
+body.body-sad-gif-background {
+    /* Set the background image to the specified 'sad' GIF */
+    background-image: url('https://media.giphy.com/media/JER2en0ZRiGUE/giphy.gif');
+    /* Apply the same coverage, positioning, and fixed attachment rules */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Optional: A different fallback color if desired */
+    background-color: #222;
+    /* Ensure full override */
+    background: url('https://media.giphy.com/media/JER2en0ZRiGUE/giphy.gif') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: #222; /* Reiterate fallback */
+}
+
+
+/* === NEW / MODIFIED Styles for Firebase Integration === */
+
+/* Utility class to hide elements */
+.hidden {
+    display: none !important; /* Use !important cautiously, ensures override if needed */
+}
+
+/* Style for the messages display section */
+.messages-section {
+     /* Inherits styles from 'section' */
+    text-align: center; /* Ensure button is centered */
+}
+
+/* Style for the Show/Hide Messages Button */
+.messages-toggle-button {
+    display: inline-block; /* Allows centering via text-align on parent */
+    padding: 10px 25px;
+    font-size: 1rem; /* Slightly smaller than main submit */
+    font-weight: bold;
+    color: var(--light-text-color);
+    background-color: var(--primary-color); /* Use Teal */
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px; /* Space below heading */
+    margin-bottom: 20px; /* Space above list */
+}
+
+.messages-toggle-button:hover {
+    background-color: #008a93; /* Darker Teal */
+    transform: translateY(-2px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.messages-toggle-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
+/* Style for the Messages List */
+.messages-list {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin: 20px auto 0; /* Center list block if needed, adjust top margin */
+    text-align: left; /* Align text inside list items left */
+    max-height: 400px; /* Limit height and allow scrolling */
+    overflow-y: auto; /* Add scrollbar if content exceeds max-height */
+    border: 1px solid #eee; /* Subtle border */
+    border-radius: var(--border-radius);
+    background-color: rgba(253, 252, 220, 0.5); /* Use accent color lightly */
+}
+
+.messages-list li {
+    padding: 12px 15px;
+    border-bottom: 1px dashed var(--secondary-color); /* Use Coral for separators */
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+.messages-list li:last-child {
+    border-bottom: none; /* Remove border from last item */
+}
+
+/* Style for timestamp (span added in JS) */
+.messages-list .timestamp {
+    display: block;
+    font-size: 0.8em;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* Style for email/attendance info (span added in JS) */
+.messages-list .attendee-info {
+    font-weight: bold;
+    color: var(--primary-color); /* Teal */
+    margin-right: 5px; /* Space between email and message */
+}
+
+/* Ensure hidden class overrides display properties for list */
+.messages-list.hidden {
+    display: none !important; /* Use !important cautiously */
 }
 
 
@@ -271,61 +395,10 @@ button[type="submit"]:active {
         margin-left: auto; /* Center button */
         margin-right: auto;
     }
+
+    /* Adjust message toggle button on larger screens */
+     .messages-toggle-button {
+        padding: 12px 35px;
+        font-size: 1.1rem;
+    }
 }
-
-/* Ensure Google Fonts import is in the HTML <head>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-*/
-
-/* Add this entire block to your style.css file */
-
-/* === Dynamic Background Class === */
-/* Add this new class definition block to your style.css file,
-   preferably near the other dynamic background class */
-
-/* === Dynamic Background Classes === */
-
-/* Class for the 'attending' GIF background */
-body.body-gif-background {
-    background-image: url('https://media.giphy.com/media/l2JHPB58MjfV8W3K0/giphy.gif');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: #333; /* Fallback color */
-    /* Ensure full override */
-    background: url('https://media.giphy.com/media/l2JHPB58MjfV8W3K0/giphy.gif') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-color: #333;
-}
-
-/* == NEW CLASS == */
-/* Class for the 'not attending' GIF background */
-body.body-sad-gif-background {
-    /* Set the background image to the specified 'sad' GIF */
-    background-image: url('https://media.giphy.com/media/JER2en0ZRiGUE/giphy.gif');
-
-    /* Apply the same coverage, positioning, and fixed attachment rules */
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    /* Optional: A different fallback color if desired */
-    background-color: #222;
-
-    /* Ensure full override */
-    background: url('https://media.giphy.com/media/JER2en0ZRiGUE/giphy.gif') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-color: #222; /* Reiterate fallback */
-}
-
-/* End of new CSS block addition */
